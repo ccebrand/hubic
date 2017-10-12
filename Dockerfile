@@ -10,7 +10,7 @@
 #                         flem/rpi-hubic
 
 
-FROM debian:jessie
+FROM debian:stretch
 MAINTAINER Franck Lemoine <franck.lemoine@flem.fr>
 
 # properly setup debian sources
@@ -37,7 +37,7 @@ RUN buildDeps=' \
 	set -x \
 	&& apt-get -y update \
 	&& apt-get -y upgrade \
-	&& apt-get install -y --no-install-recommends $buildDeps \
+	&& apt-get install -y --no-install-recommends $buildDeps ca-certificates-mono\
 	&& wget -O /tmp/hubiC.deb ${HUBIC_PACKAGE_URL} \
 	&& dpkg -i /tmp/hubiC.deb \
 	&& sed -ri ' \
